@@ -1,23 +1,45 @@
 /* --- Global Styles & Variables --- */
 :root {
-  /* Tech-inspired Palette - Blues and Cool Grays */
-  --primary-color: #007BFF;
-  /* Bright Blue */
-  --primary-color-dark: #0056b3;
-  --primary-color-light: #cce5ff;
-  --accent-color: #17a2b8;
-  /* Teal Accent */
-  --secondary-bg: #f8f9fa;
-  /* Very light gray for alternate sections */
-  --text-color: #495057;
-  /* Dark Gray for text */
-  --heading-color: #212529;
-  /* Near Black for headings */
-  --light-gray: #dee2e6;
-  --white: #ffffff;
-  --border-color: #e9ecef;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --font-family: 'Poppins', sans-serif;
+  /* Anthropic-inspired Palette: Minimalist, focus on typography and space */
+  --background-primary: #ffffff;
+  /* Pure White */
+  --background-secondary: #f9fafb;
+  /* Very Light Gray */
+  --text-primary: #111827;
+  /* Very Dark Gray (almost black) */
+  --text-secondary: #4b5563;
+  /* Medium Gray */
+  --text-subtle: #6b7280;
+  /* Lighter Gray */
+  --border-color: #e5e7eb;
+  /* Light Gray Border */
+
+  /* Accent: Using a subtle gradient or a single muted color */
+  --accent-start: #4f46e5;
+  /* Indigo */
+  --accent-end: #7c3aed;
+  /* Violet */
+  --accent-solid: #4f46e5;
+  /* Solid accent color if gradient not used */
+
+  /* Font using Inter */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Spacing Units (example) */
+  --space-xs: 0.25rem;
+  /* 4px */
+  --space-sm: 0.5rem;
+  /* 8px */
+  --space-md: 1rem;
+  /* 16px */
+  --space-lg: 1.5rem;
+  /* 24px */
+  --space-xl: 2.5rem;
+  /* 40px */
+  --space-xxl: 4rem;
+  /* 64px */
+  --space-xxxl: 6rem;
+  /* 96px */
 }
 
 * {
@@ -28,120 +50,148 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 100%;
+  /* Base font size */
 }
 
 body {
   font-family: var(--font-family);
-  line-height: 1.7;
-  /* Slightly increased line-height for readability */
-  color: var(--text-color);
-  background-color: var(--white);
+  line-height: 1.65;
+  /* Generous line height for readability */
+  color: var(--text-primary);
+  background-color: var(--background-primary);
   font-weight: 400;
-  /* Default font weight */
+  -webkit-font-smoothing: antialiased;
+  /* Smoother fonts on WebKit */
+  -moz-osx-font-smoothing: grayscale;
+  /* Smoother fonts on Firefox */
 }
 
 .container {
-  max-width: 1140px;
-  /* Slightly wider container */
+  max-width: 1100px;
+  /* Slightly narrower for focus */
   margin: 0 auto;
-  padding: 0 25px;
+  padding: 0 var(--space-lg);
 }
 
+/* --- Typography --- */
 h1,
 h2,
 h3,
-h4 {
-  color: var(--heading-color);
-  margin-bottom: 0.75em;
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  /* Semi-bold for headings */
   line-height: 1.3;
-  font-weight: 600;
+  margin-bottom: 0.6em;
+  /* Consistent bottom margin */
 }
 
-h2 {
-  font-size: 2.6rem;
-  /* Larger section headings */
-  text-align: center;
-  margin-bottom: 1.5em;
+h1.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+h2.hero-headline {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
   font-weight: 700;
-  /* Bolder headings */
+  line-height: 1.15;
 }
 
-h3 {
-  font-size: 1.6rem;
+/* Responsive font size */
+h3.section-title {
+  font-size: 2rem;
   font-weight: 600;
+  text-align: center;
 }
 
 h4 {
-  font-size: 1.25rem;
-  /* Slightly larger */
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 500;
+  /* Medium weight for card titles */
 }
 
 p {
-  margin-bottom: 1.2em;
-  /* More spacing after paragraphs */
-}
-
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
-
-a:hover {
-  color: var(--primary-color-dark);
-}
-
-.content-section {
-  padding: 80px 0;
-  /* Increased padding */
-}
-
-.alt-bg {
-  background-color: var(--secondary-bg);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  max-width: 65ch;
+  /* Limit line length for readability */
 }
 
 .section-intro {
+  font-size: 1.1rem;
+  color: var(--text-subtle);
   text-align: center;
-  max-width: 750px;
-  margin: -1em auto 50px auto;
+  max-width: 60ch;
+  margin: calc(-0.5 * var(--space-md)) auto var(--space-xl) auto;
   /* Adjust margin */
-  font-size: 1.15rem;
-  color: #6c757d;
-  /* Muted intro text color */
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin: var(--space-lg) auto var(--space-xl) auto;
+  font-weight: 400;
+}
+
+.contact-note {
+  font-size: 0.9rem;
+  color: var(--text-subtle);
+  margin-top: var(--space-md);
+}
+
+a {
+  color: var(--accent-solid);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-start);
+}
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+  /* Inherit color for logo link */
+}
+
+.logo-link:hover {
+  color: inherit;
+  /* No color change on logo hover */
+}
+
+/* Gradient Text Utility */
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent-start) 0%, var(--accent-end) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
 /* --- Header --- */
 header {
-  background-color: var(--white);
-  padding: 15px 0;
+  background-color: var(--background-primary);
+  padding: var(--space-md) 0;
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  /* Subtle sticky shadow */
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  /* Subtle blur if background is transparent/translucent */
+  background-color: rgba(255, 255, 255, 0.85);
+  /* Slightly transparent white */
 }
 
-header .container {
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.logo {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: var(--heading-color);
-  /* Darker logo */
-  margin-bottom: 0;
-}
-
-.logo span {
-  /* If you want to highlight part of the logo */
-  color: var(--primary-color);
 }
 
 header nav ul {
@@ -150,457 +200,302 @@ header nav ul {
 }
 
 header nav ul li {
-  margin-left: 30px;
-  /* More spacing */
+  margin-left: var(--space-lg);
 }
 
 header nav ul li a {
+  font-size: 0.95rem;
   font-weight: 500;
-  /* Medium weight */
-  color: var(--text-color);
-  padding: 8px 0;
-  position: relative;
+  /* Medium weight for nav links */
+  color: var(--text-secondary);
+  padding: var(--space-sm) 0;
   transition: color 0.2s ease;
 }
 
-header nav ul li a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  display: block;
-  margin-top: 4px;
-  right: 0;
-  background: var(--primary-color);
-  transition: width 0.3s ease, background-color 0.3s ease;
-}
-
 header nav ul li a:hover {
-  color: var(--primary-color);
+  color: var(--text-primary);
 }
 
-header nav ul li a:hover::after {
-  width: 100%;
-  left: 0;
-  background-color: var(--primary-color);
-}
 
 /* --- Hero Section --- */
-#hero {
-  /* Using a subtle gradient and allowing space for illustration */
-  background: linear-gradient(45deg, var(--primary-color) 0%, var(--accent-color) 100%);
-  color: var(--white);
-  padding: 100px 0 0 0;
-  /* Padding top, bottom handled by wave */
-  position: relative;
-  overflow: hidden;
-  /* To contain the wave */
+.hero-section {
+  background-color: var(--background-primary);
   text-align: center;
+  padding: var(--space-xxxl) 0 var(--space-xxl) 0;
+  /* Lots of vertical padding */
+  border-bottom: 1px solid var(--border-color);
+  min-height: 60vh;
+  /* Ensure decent height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  padding-bottom: 120px;
-  /* Space above the wave */
+  max-width: 800px;
+  /* Limit content width */
 }
 
-.hero-illustration {
-  margin-bottom: 20px;
-  opacity: 0.8;
-}
-
-/* Style the SVG placeholder */
-.hero-illustration svg path {
-  fill: rgba(255, 255, 255, 0.3);
-  /* Make the illustration subtle */
-}
-
-
-#hero h2 {
-  font-size: 3.2rem;
-  /* Larger hero heading */
-  font-weight: 700;
-  margin-bottom: 0.5em;
-  color: var(--white);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  /* Subtle text shadow */
-}
-
-#hero .subtitle {
-  font-size: 1.35rem;
-  font-weight: 300;
-  max-width: 750px;
-  margin: 0 auto 2em auto;
-  opacity: 0.95;
-}
-
-.cta-button {
+/* --- Buttons --- */
+.cta-button,
+.email-button {
   display: inline-block;
-  background-color: var(--white);
-  color: var(--primary-color-dark);
-  padding: 16px 40px;
-  /* Larger button */
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  border: none;
-  /* Remove default border */
+  font-size: 1rem;
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: 6px;
+  /* Subtle rounding */
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  text-align: center;
+}
+
+/* Primary CTA Button Style */
+.cta-button {
+  background-color: var(--text-primary);
+  color: var(--background-primary);
+  border: 1px solid var(--text-primary);
 }
 
 .cta-button:hover {
-  background-color: var(--secondary-bg);
-  /* Light hover state */
-  color: var(--primary-color-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: var(--text-secondary);
+  border-color: var(--text-secondary);
+  color: var(--background-primary);
+  transform: scale(1.02);
+  /* Slight scale on hover */
 }
 
-/* Decorative Wave */
-.hero-wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  /* Adjust height as needed */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,192L80,176C160,160,320,128,480,138.7C640,149,800,203,960,208C1120,213,1280,171,1360,149.3L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 1;
+/* Email Button Style (less prominent) */
+.email-button {
+  background-color: transparent;
+  color: var(--accent-solid);
+  border: 1px solid var(--border-color);
+  /* Subtle border */
+  margin-top: var(--space-lg);
 }
 
+.email-button:hover {
+  background-color: var(--background-secondary);
+  border-color: var(--accent-solid);
+  color: var(--accent-start);
+}
 
-/* --- Services Section --- */
+/* --- General Content Sections --- */
+.content-section {
+  padding: var(--space-xxl) 0;
+}
+
+.alt-bg {
+  background-color: var(--background-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-title {
+  margin-bottom: var(--space-xl);
+  /* More space after section title */
+}
+
+/* --- Service Cards --- */
 .service-cards {
   display: grid;
-  /* Using Grid for more control */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  /* Responsive columns */
-  gap: 35px;
-  margin-bottom: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
 }
 
 .card {
-  background-color: var(--white);
-  padding: 35px;
-  border-radius: 8px;
-  /* Slightly softer radius */
-  box-shadow: 0 4px 12px var(--shadow-color);
-  /* Softer shadow */
-  text-align: left;
-  /* Align text left for content clarity */
+  background-color: var(--background-primary);
+  padding: var(--space-lg);
   border: 1px solid var(--border-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  /* Flex layout for icon and text */
-  flex-direction: column;
+  border-radius: 8px;
+  /* Slightly more rounded */
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: var(--text-subtle);
+  transform: translateY(-4px);
+  /* Subtle lift */
 }
 
 .card-icon {
-  margin-bottom: 20px;
-  color: var(--primary-color);
-  /* Use primary color for icons */
-  align-self: flex-start;
-  /* Align icon to the start */
+  margin-bottom: var(--space-md);
+  color: var(--accent-solid);
+  /* Use accent color for icons */
 }
 
-.card-icon svg {
-  width: 48px;
-  height: 48px;
+.icon-style {
+  /* Base style for SVG icons */
+  width: 2rem;
+  /* 32px */
+  height: 2rem;
+  stroke-width: 1.5;
 }
 
-.card h3 {
-  margin-bottom: 15px;
-  font-size: 1.4rem;
-  color: var(--heading-color);
+.card h4 {
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
 }
 
 .card p {
-  font-size: 1rem;
-  flex-grow: 1;
-  /* Allows paragraph to take up space */
-}
-
-.flexibility-info {
-  background-color: var(--primary-color-light);
-  /* Light blue background */
-  padding: 35px;
-  border-radius: 8px;
-  text-align: center;
-  margin-top: 40px;
-  border: 1px solid rgba(0, 123, 255, 0.2);
-}
-
-.flexibility-info h3 {
-  color: var(--primary-color-dark);
-  margin-bottom: 15px;
-}
-
-.flexibility-info p {
-  color: var(--primary-color-dark);
-  opacity: 0.9;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
   margin-bottom: 0;
+  /* Remove default bottom margin for last element */
 }
 
+/* --- Flexibility Info Box --- */
+.content-section-inset {
+  /* Style for the inset box */
+  background-color: var(--background-secondary);
+  padding: var(--space-lg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+  margin-top: var(--space-xl);
+}
 
-/* --- Why Us Section (Features) --- */
+.content-section-inset h3 {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.content-section-inset p {
+  color: var(--text-secondary);
+  max-width: 70ch;
+  margin: 0 auto;
+  /* Center text */
+  font-size: 1rem;
+}
+
+/* --- Why Us / Features Section --- */
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* 2 or 4 columns */
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  /* Allow for 2 or 4 items nicely */
+  gap: var(--space-xl);
 }
 
 .feature-item {
-  text-align: center;
-  padding: 15px;
+  text-align: left;
+  /* Align text left */
 }
 
 .feature-icon {
-  display: inline-block;
-  /* Center icon */
-  margin-bottom: 20px;
-  color: var(--accent-color);
-  /* Use accent color */
-}
-
-.feature-icon svg {
-  width: 40px;
-  height: 40px;
+  margin-bottom: var(--space-sm);
+  color: var(--accent-solid);
 }
 
 .feature-item h4 {
-  margin-bottom: 10px;
-  color: var(--heading-color);
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+  /* Stronger feature titles */
 }
 
 .feature-item p {
   font-size: 0.95rem;
-  /* Slightly smaller text */
+  color: var(--text-secondary);
+  margin-bottom: 0;
 }
+
 
 /* --- Contact Section --- */
 .contact-section {
-  background-color: var(--heading-color);
-  /* Dark background for contrast */
-  color: var(--white);
   text-align: center;
-  padding: 80px 0;
-}
-
-.contact-section h2 {
-  color: var(--white);
-  margin-bottom: 0.7em;
-}
-
-.contact-section p {
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.85);
-  /* Slightly transparent white */
-}
-
-.email-button {
-  /* Renamed from email-link for clarity */
-  display: inline-flex;
-  /* Use flex to align icon and text */
-  align-items: center;
-  margin: 25px 0;
-  padding: 16px 35px;
-  background-color: var(--primary-color);
-  color: var(--white);
-  font-size: 1.15rem;
-  font-weight: 600;
-  border-radius: 8px;
-  border: 1px solid var(--primary-color);
-  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-}
-
-.email-button:hover {
-  background-color: var(--primary-color-dark);
-  color: var(--white);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
-}
-
-.contact-note {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 15px;
+  /* Keeping it on the primary background for minimalist feel */
+  border-top: 1px solid var(--border-color);
 }
 
 
 /* --- Footer --- */
 footer {
-  background-color: #1c2331;
-  /* Darker footer */
-  color: rgba(255, 255, 255, 0.7);
+  background-color: var(--background-secondary);
+  color: var(--text-subtle);
   text-align: center;
-  padding: 30px 0;
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--border-color);
   margin-top: 0;
-  /* Remove margin as contact section is dark */
   font-size: 0.9rem;
 }
 
-footer p {
-  margin-bottom: 0.5em;
-}
-
-footer p:last-child {
-  margin-bottom: 0;
+.footer-content p {
+  max-width: none;
+  /* Allow footer text to span width */
+  color: var(--text-subtle);
+  margin-bottom: var(--space-xs);
   font-size: 0.85rem;
-  opacity: 0.8;
 }
 
-/* --- Responsive Design --- */
-
-/* Tablets */
-@media (max-width: 992px) {
-  h2 {
-    font-size: 2.4rem;
-  }
-
-  #hero h2 {
-    font-size: 2.8rem;
-  }
-
-  #hero .subtitle {
-    font-size: 1.25rem;
-    max-width: 90%;
-  }
-
-  .container {
-    padding: 0 20px;
-  }
+.footer-content p:last-child {
+  margin-bottom: 0;
 }
 
-/* Smaller Tablets / Large Phones */
+/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
-  h2 {
-    font-size: 2.1rem;
+  h2.hero-headline {
+    font-size: clamp(2rem, 6vw + 0.5rem, 3rem);
   }
 
-  #hero h2 {
-    font-size: 2.4rem;
+  h3.section-title {
+    font-size: 1.8rem;
   }
 
-  #hero .subtitle {
-    font-size: 1.15rem;
+  .hero-subtitle {
+    font-size: 1.1rem;
   }
 
-  .content-section {
-    padding: 60px 0;
-  }
-
-  .contact-section {
-    padding: 60px 0;
-  }
-
-  header .container {
-    flex-direction: column;
-  }
-
-  .logo {
-    margin-bottom: 15px;
-  }
-
-  header nav ul {
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 0;
-  }
-
-  header nav ul li {
-    margin: 5px 15px;
-  }
-
-  .service-cards {
-    gap: 25px;
-  }
-
-  .card {
-    padding: 30px;
-  }
-
-  .features {
-    gap: 30px;
-  }
-
-  .feature-item {
-    padding: 10px;
-  }
-}
-
-/* Mobile Phones */
-@media (max-width: 576px) {
-  h2 {
-    font-size: 1.9rem;
-  }
-
-  #hero {
-    padding-top: 80px;
-  }
-
-  #hero h2 {
-    font-size: 2.1rem;
-  }
-
-  #hero .subtitle {
-    font-size: 1.05rem;
-  }
-
-  .cta-button {
-    padding: 14px 30px;
+  .section-intro {
     font-size: 1rem;
   }
 
-  .email-button {
-    padding: 14px 30px;
-    font-size: 1.05rem;
-  }
-
-  .container {
-    padding: 0 15px;
-  }
-
   .content-section {
-    padding: 50px 0;
+    padding: var(--space-xl) 0;
   }
 
-  .contact-section {
-    padding: 50px 0;
+  .hero-section {
+    padding: var(--space-xxl) 0;
   }
 
-  .service-cards {
-    grid-template-columns: 1fr;
-    /* Stack cards */
-    gap: 20px;
+  header nav ul {
+    /* Simple mobile nav approach - consider JS for burger menu later */
+    display: none;
+    /* Hide nav on mobile for pure CSS/HTML */
+    /* OR: flex-wrap: wrap; justify-content: center; margin-top: var(--space-md); */
   }
 
-  .card {
-    padding: 25px;
-  }
+  /* Optional: Show nav if needed */
+  /* header nav ul { display: flex; flex-wrap: wrap; justify-content: center; margin-top: var(--space-md); } */
+  /* header nav ul li { margin: var(--space-xs) var(--space-sm); } */
 
   .features {
-    grid-template-columns: 1fr;
-    /* Stack features */
-    gap: 25px;
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 95%;
   }
 
-  footer {
-    padding: 25px 0;
+  /* Slightly smaller base font on small screens */
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  h2.hero-headline {
+    line-height: 1.2;
+  }
+
+  .cta-button,
+  .email-button {
+    width: 100%;
+    /* Full width buttons */
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .email-button {
+    margin-top: var(--space-md);
   }
 }
