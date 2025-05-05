@@ -431,30 +431,113 @@ header nav ul li a:hover {
 }
 
 /* --- Why Us / Features Section --- */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-xl);
+.advantage-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxxl);
+  /* Generous space between rows */
+  margin-top: var(--space-xxl);
+  /* Space below section intro */
 }
 
-.feature-item {
+.advantage-row {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+  align-items: center;
+  /* Vertically align items */
+  gap: var(--space-xl);
+  /* Gap between text and visual */
+}
+
+.advantage-text,
+.advantage-visual {
+  flex: 1;
+  /* Each takes up half the space */
+  min-width: 280px;
+  /* Prevent columns from becoming too narrow */
+}
+
+.advantage-text {
   text-align: left;
 }
 
-.feature-icon {
+.advantage-text h4 {
+  font-size: 1.5rem;
+  /* Slightly larger heading for features */
+  font-weight: 600;
   margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.advantage-text p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  /* Remove margin if it's the last element */
+}
+
+.advantage-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Optional: Add background/border to visual area */
+  /* background-color: var(--card-background); */
+  /* padding: var(--space-xl); */
+  /* border-radius: 12px; */
+  /* box-shadow: var(--shadow-sm); */
+  /* border: 1px solid var(--border-color); */
+}
+
+/* Style for the larger icons in this section */
+.icon-style-large {
+  width: 4rem;
+  /* 64px */
+  height: 4rem;
+  stroke-width: 1.2;
+  /* Thinner stroke for larger size */
   color: var(--accent-solid);
 }
 
-.feature-item h4 {
-  margin-bottom: var(--space-xs);
-  font-weight: 600;
+/* Handle the reversed rows */
+.advantage-row.row-reversed {
+  flex-direction: row-reverse;
+  /* Flip the order */
 }
 
-.feature-item p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  margin-bottom: 0;
+
+/* --- Responsive Adjustments for Advantage Section --- */
+@media (max-width: 768px) {
+  .advantage-list {
+    gap: var(--space-xxl);
+    /* Reduce gap between rows */
+  }
+
+  .advantage-row,
+  .advantage-row.row-reversed {
+    flex-direction: column;
+    /* Stack columns */
+    gap: var(--space-lg);
+    /* Reduce gap when stacked */
+  }
+
+  .advantage-text {
+    text-align: center;
+    /* Center text when stacked */
+    order: 2;
+    /* Ensure text comes after visual */
+  }
+
+  .advantage-visual {
+    order: 1;
+    /* Ensure visual comes first */
+    padding: var(--space-lg) 0;
+    /* Adjust padding if needed */
+  }
+
+  .advantage-text h4 {
+    font-size: 1.4rem;
+  }
 }
 
 
