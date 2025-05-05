@@ -1,31 +1,42 @@
 /* --- Global Styles & Variables --- */
 :root {
-  /* Anthropic-inspired Palette: Minimalist, focus on typography and space */
-  --background-primary: #ffffff;
-  /* Pure White */
-  --background-secondary: #f9fafb;
-  /* Very Light Gray */
-  --text-primary: #111827;
-  /* Very Dark Gray (almost black) */
-  --text-secondary: #4b5563;
+  /* Palette: Light background, gradients, Material feel */
+  --background-primary: #f8f9fa;
+  /* Light Gray Background */
+  --background-secondary: #e9ecef;
+  /* Slightly Darker Gray for Alt Sections */
+  --card-background: #ffffff;
+  /* White for Cards */
+  --text-primary: #212529;
+  /* Darker Gray for Text */
+  --text-secondary: #495057;
   /* Medium Gray */
-  --text-subtle: #6b7280;
+  --text-subtle: #6c757d;
   /* Lighter Gray */
-  --border-color: #e5e7eb;
+  --border-color: #dee2e6;
   /* Light Gray Border */
 
-  /* Accent: Using a subtle gradient or a single muted color */
+  /* Accent Colors & Gradients */
   --accent-start: #4f46e5;
   /* Indigo */
   --accent-end: #7c3aed;
   /* Violet */
-  --accent-solid: #4f46e5;
-  /* Solid accent color if gradient not used */
+  --accent-solid: #5a4ff0;
+  /* Average or solid accent */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* Blue/Purple Gradient */
+  --gradient-button: linear-gradient(90deg, var(--accent-start) 0%, var(--accent-solid) 100%);
+  --gradient-text: linear-gradient(90deg, var(--accent-start) 0%, var(--accent-end) 100%);
 
-  /* Font using Inter */
+  /* Font */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-  /* Spacing Units (example) */
+  /* Material Design Inspired Shadows (Subtle) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+
+  /* Spacing Units */
   --space-xs: 0.25rem;
   /* 4px */
   --space-sm: 0.5rem;
@@ -51,25 +62,22 @@
 html {
   scroll-behavior: smooth;
   font-size: 100%;
-  /* Base font size */
 }
 
 body {
   font-family: var(--font-family);
   line-height: 1.65;
-  /* Generous line height for readability */
   color: var(--text-primary);
   background-color: var(--background-primary);
+  /* Using light gray background */
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  /* Smoother fonts on WebKit */
   -moz-osx-font-smoothing: grayscale;
-  /* Smoother fonts on Firefox */
 }
 
 .container {
-  max-width: 1100px;
-  /* Slightly narrower for focus */
+  max-width: 1140px;
+  /* Slightly wider */
   margin: 0 auto;
   padding: 0 var(--space-lg);
 }
@@ -83,59 +91,61 @@ h5,
 h6 {
   color: var(--text-primary);
   font-weight: 600;
-  /* Semi-bold for headings */
   line-height: 1.3;
   margin-bottom: 0.6em;
-  /* Consistent bottom margin */
 }
 
 h1.logo {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
   margin: 0;
 }
 
+/* Slightly bolder logo */
 h2.hero-headline {
-  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  font-size: clamp(2.6rem, 5vw + 1rem, 4.2rem);
   font-weight: 700;
   line-height: 1.15;
+  color: var(--white);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive font size */
+/* White text for hero */
 h3.section-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 600;
   text-align: center;
 }
 
 h4 {
-  font-size: 1.125rem;
-  font-weight: 500;
-  /* Medium weight for card titles */
+  font-size: 1.2rem;
+  font-weight: 600;
 }
+
+/* Bolder card titles */
 
 p {
   color: var(--text-secondary);
   margin-bottom: var(--space-md);
-  max-width: 65ch;
-  /* Limit line length for readability */
+  max-width: 68ch;
 }
 
 .section-intro {
   font-size: 1.1rem;
   color: var(--text-subtle);
   text-align: center;
-  max-width: 60ch;
+  max-width: 65ch;
   margin: calc(-0.5 * var(--space-md)) auto var(--space-xl) auto;
-  /* Adjust margin */
 }
 
 .hero-subtitle {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  /* White text for hero */
   max-width: 60ch;
   margin: var(--space-lg) auto var(--space-xl) auto;
   font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .contact-note {
@@ -147,45 +157,59 @@ p {
 a {
   color: var(--accent-solid);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, filter 0.2s ease;
 }
 
 a:hover {
-  color: var(--accent-start);
+  filter: brightness(1.1);
 }
 
 .logo-link {
   text-decoration: none;
   color: inherit;
-  /* Inherit color for logo link */
 }
 
 .logo-link:hover {
-  color: inherit;
-  /* No color change on logo hover */
+  filter: none;
 }
 
-/* Gradient Text Utility */
-.gradient-text {
-  background: linear-gradient(90deg, var(--accent-start) 0%, var(--accent-end) 100%);
+/* No brightness change on logo */
+
+/* Gradient Text Utility (Stronger visibility) */
+.gradient-text-strong {
+  display: inline;
+  /* Needed for background clip */
+  background: var(--gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
 }
 
+/* Specific override for hero headline gradient if needed */
+.hero-headline .gradient-text-strong {
+  background: linear-gradient(90deg, #ffffff 0%, #e0e7ff 100%);
+  /* White/Light Indigo gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+
 /* --- Header --- */
 header {
-  background-color: var(--background-primary);
+  background-color: rgba(255, 255, 255, 0.9);
+  /* White, slightly transparent */
   padding: var(--space-md) 0;
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(5px);
-  /* Subtle blur if background is transparent/translucent */
-  background-color: rgba(255, 255, 255, 0.85);
-  /* Slightly transparent white */
+  backdrop-filter: blur(8px);
+  /* Stronger blur */
+  box-shadow: var(--shadow-sm);
+  /* Add subtle shadow */
 }
 
 .header-container {
@@ -206,7 +230,6 @@ header nav ul li {
 header nav ul li a {
   font-size: 0.95rem;
   font-weight: 500;
-  /* Medium weight for nav links */
   color: var(--text-secondary);
   padding: var(--space-sm) 0;
   transition: color 0.2s ease;
@@ -219,65 +242,102 @@ header nav ul li a:hover {
 
 /* --- Hero Section --- */
 .hero-section {
-  background-color: var(--background-primary);
+  background: var(--gradient-primary);
+  /* Apply gradient background */
+  color: var(--white);
+  /* Ensure text is white */
   text-align: center;
-  padding: var(--space-xxxl) 0 var(--space-xxl) 0;
-  /* Lots of vertical padding */
-  border-bottom: 1px solid var(--border-color);
-  min-height: 60vh;
-  /* Ensure decent height */
+  padding: var(--space-xxxl) 0;
+  position: relative;
+  /* Needed for pseudo-elements or shapes */
+  overflow: hidden;
+  /* Contain shapes */
+  border-bottom: 1px solid transparent;
+  /* Avoid border collapsing */
+  min-height: 65vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .hero-content {
-  max-width: 800px;
-  /* Limit content width */
+  position: relative;
+  /* Above background shapes */
+  z-index: 2;
+  max-width: 850px;
 }
+
+/* Optional decorative shape */
+.hero-bg-shape {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 150px;
+  background-color: var(--background-primary);
+  /* Use main bg color */
+  border-radius: 50% / 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  opacity: 1;
+  /* Make it solid */
+  z-index: 1;
+}
+
 
 /* --- Buttons --- */
 .cta-button,
 .email-button {
   display: inline-block;
   font-size: 1rem;
-  font-weight: 500;
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: 6px;
-  /* Subtle rounding */
+  font-weight: 600;
+  /* Bolder button text */
+  padding: calc(var(--space-sm) + 2px) var(--space-lg);
+  /* Slightly larger padding */
+  border-radius: 8px;
+  /* Slightly more rounded */
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
   text-align: center;
+  border: none;
+  /* Remove border */
+  box-shadow: var(--shadow-md);
+  /* Add Material shadow */
 }
 
 /* Primary CTA Button Style */
 .cta-button {
-  background-color: var(--text-primary);
-  color: var(--background-primary);
-  border: 1px solid var(--text-primary);
+  background: var(--gradient-button);
+  color: var(--white);
 }
 
 .cta-button:hover {
-  background-color: var(--text-secondary);
-  border-color: var(--text-secondary);
-  color: var(--background-primary);
-  transform: scale(1.02);
-  /* Slight scale on hover */
+  filter: brightness(1.1);
+  /* Brighter on hover */
+  box-shadow: var(--shadow-lg);
+  /* Larger shadow on hover */
+  transform: translateY(-2px);
+  /* Lift effect */
 }
 
-/* Email Button Style (less prominent) */
+/* Email Button Style */
 .email-button {
-  background-color: transparent;
+  background: var(--card-background);
+  /* White background */
   color: var(--accent-solid);
-  border: 1px solid var(--border-color);
-  /* Subtle border */
   margin-top: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  /* Lighter shadow */
+  border: 1px solid var(--border-color);
 }
 
 .email-button:hover {
-  background-color: var(--background-secondary);
   border-color: var(--accent-solid);
-  color: var(--accent-start);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  filter: none;
+  /* Reset brightness */
 }
 
 /* --- General Content Sections --- */
@@ -293,46 +353,46 @@ header nav ul li a:hover {
 
 .section-title {
   margin-bottom: var(--space-xl);
-  /* More space after section title */
 }
 
 /* --- Service Cards --- */
 .service-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-lg);
   margin-bottom: var(--space-xl);
 }
 
 .card {
-  background-color: var(--background-primary);
+  background-color: var(--card-background);
   padding: var(--space-lg);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 10px;
   /* Slightly more rounded */
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-md);
+  /* Material shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-  border-color: var(--text-subtle);
-  transform: translateY(-4px);
-  /* Subtle lift */
+  box-shadow: var(--shadow-lg);
+  /* Increase shadow on hover */
+  transform: translateY(-5px);
+  /* Lift effect */
 }
 
 .card-icon {
   margin-bottom: var(--space-md);
   color: var(--accent-solid);
-  /* Use accent color for icons */
 }
 
 .icon-style {
-  /* Base style for SVG icons */
-  width: 2rem;
-  /* 32px */
-  height: 2rem;
+  width: 2.2rem;
+  height: 2.2rem;
   stroke-width: 1.5;
 }
 
+/* Slightly larger icons */
 .card h4 {
   margin-bottom: var(--space-sm);
   color: var(--text-primary);
@@ -342,18 +402,19 @@ header nav ul li a:hover {
   font-size: 0.95rem;
   color: var(--text-secondary);
   margin-bottom: 0;
-  /* Remove default bottom margin for last element */
 }
 
 /* --- Flexibility Info Box --- */
 .content-section-inset {
-  /* Style for the inset box */
-  background-color: var(--background-secondary);
+  background-color: var(--card-background);
+  /* Use white */
   padding: var(--space-lg);
   border-radius: 8px;
   border: 1px solid var(--border-color);
   text-align: center;
   margin-top: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  /* Subtle shadow */
 }
 
 .content-section-inset h3 {
@@ -366,7 +427,6 @@ header nav ul li a:hover {
   color: var(--text-secondary);
   max-width: 70ch;
   margin: 0 auto;
-  /* Center text */
   font-size: 1rem;
 }
 
@@ -374,13 +434,11 @@ header nav ul li a:hover {
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  /* Allow for 2 or 4 items nicely */
   gap: var(--space-xl);
 }
 
 .feature-item {
   text-align: left;
-  /* Align text left */
 }
 
 .feature-icon {
@@ -391,7 +449,6 @@ header nav ul li a:hover {
 .feature-item h4 {
   margin-bottom: var(--space-xs);
   font-weight: 600;
-  /* Stronger feature titles */
 }
 
 .feature-item p {
@@ -404,26 +461,31 @@ header nav ul li a:hover {
 /* --- Contact Section --- */
 .contact-section {
   text-align: center;
-  /* Keeping it on the primary background for minimalist feel */
+  background-color: var(--background-secondary);
+  /* Use alt background */
   border-top: 1px solid var(--border-color);
+  padding-bottom: calc(var(--space-xxl) + var(--space-lg));
+  /* Extra padding at bottom before footer */
 }
 
 
 /* --- Footer --- */
 footer {
-  background-color: var(--background-secondary);
-  color: var(--text-subtle);
+  background-color: var(--text-primary);
+  /* Dark footer */
+  color: rgba(255, 255, 255, 0.7);
+  /* White text on dark */
   text-align: center;
-  padding: var(--space-xl) 0;
-  border-top: 1px solid var(--border-color);
+  padding: var(--space-lg) 0;
+  /* Reduced padding */
+  border-top: none;
+  /* Remove top border */
   margin-top: 0;
   font-size: 0.9rem;
 }
 
 .footer-content p {
-  max-width: none;
-  /* Allow footer text to span width */
-  color: var(--text-subtle);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: var(--space-xs);
   font-size: 0.85rem;
 }
@@ -435,15 +497,15 @@ footer {
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
   h2.hero-headline {
-    font-size: clamp(2rem, 6vw + 0.5rem, 3rem);
+    font-size: clamp(2.2rem, 6vw + 0.5rem, 3.2rem);
   }
 
   h3.section-title {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
 
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .section-intro {
@@ -459,19 +521,10 @@ footer {
   }
 
   header nav ul {
-    /* Simple mobile nav approach - consider JS for burger menu later */
     display: none;
-    /* Hide nav on mobile for pure CSS/HTML */
-    /* OR: flex-wrap: wrap; justify-content: center; margin-top: var(--space-md); */
   }
 
-  /* Optional: Show nav if needed */
-  /* header nav ul { display: flex; flex-wrap: wrap; justify-content: center; margin-top: var(--space-md); } */
-  /* header nav ul li { margin: var(--space-xs) var(--space-sm); } */
-
-  .features {
-    gap: var(--space-lg);
-  }
+  /* Hide nav again for simplicity */
 }
 
 @media (max-width: 576px) {
@@ -479,7 +532,6 @@ footer {
     font-size: 95%;
   }
 
-  /* Slightly smaller base font on small screens */
   .container {
     padding: 0 var(--space-md);
   }
@@ -490,12 +542,21 @@ footer {
 
   .cta-button,
   .email-button {
-    width: 100%;
-    /* Full width buttons */
+    width: 90%;
+    /* Slightly less than full width */
     padding: var(--space-md) var(--space-lg);
   }
 
-  .email-button {
-    margin-top: var(--space-md);
+  .service-cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
   }
+
+  /* Stack cards */
+  .features {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  /* Stack features */
 }
